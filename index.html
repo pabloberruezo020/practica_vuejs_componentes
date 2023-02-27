@@ -16,7 +16,7 @@
 
         <!-- https://vuejs.org/v2/guide/index.html -->
         <div id="app">
-             <!--
+            <!--
                  TODO: Aplicación VueJS. Ver archivo ./js/script.js
                - Mostrar el título de la colección dentro de un componente Jumbotron de Bootstrap https://getbootstrap.com/docs/4.0/components/jumbotron/. En su interior habrá un <h1> con id "title" que mostrará el título de la colección
                - Para cada item: (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
@@ -41,9 +41,12 @@
         <!-- Plantilla para el componente edit-form -->
         <script type="text/x-template" id="editForm">
 
-            <!--
-                 TODO: Componente edit-form
-            -->
+            <dl v-for="data in item.data">
+            <dd>{{ data.prompt }}</dd> 
+            <input v-if="data.prompt != description" type="text" v-model="data.value">
+            <textarea v-else v-model="data.value" type="text"></textarea>
+            </dl>
+            <button @click="formClose" class="btn btn-primary">Cerrar</button>
 
         </script>
 
@@ -52,14 +55,30 @@
         <!-- Plantilla para el componente item-data -->
         <script type="text/x-template" id="itemData">
 
-            <!--
-                 TODO: Componente item-data
-            -->
+            <div class="card" style="width: 18rem;">
+                <div class="card-body" v-show="datos">
+                  <dl v-for="data in item.data">
+                  <dt>{{ data.prompt }}</dt>
+                  <dd>{{ data.value }}</dd>
+              </dl>
+              <a :href=item.href class="btn btn-primary">Ver</a> 
+              <button @click="toggleEditFormVisibility" class="btn btn-secondary">Editar</button>
+              </div>
+              <div class="card-body" v-show="edicion">
+                  <dl v-for="data in item.data">
+                      <dt>{{ data.prompt }}</dt> 
+                      <input v-if="data.prompt != 'Description'" type="text" v-model="data.value">
+                      <textarea v-else v-model="data.value" type="text"></textarea>
+                  </dl>
+                  <button @click="formClose" class="btn btn-primary">Cerrar</button>
+              </div>
+           </div>         
 
         </script>
 
 
-        <!-- TODO: Cargar librería VueJS y archivo js/script.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="js/script.js"></script>
 
     </body>
 
