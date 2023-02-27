@@ -7,21 +7,32 @@
         <meta name="author" content="">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- TODO: Cargar CSS Bootstrap (no es necesario el JS) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
     <body>
 
-        <h1 id="autor">Autor: TU NOMBRE AQUÍ</h1>
+        <h1 id="autor">Autor: Pablo Berruezo</h1>
 
         <!-- https://vuejs.org/v2/guide/index.html -->
         <div id="app">
-            <!--
+             <!--
                  TODO: Aplicación VueJS. Ver archivo ./js/script.js
                - Mostrar el título de la colección dentro de un componente Jumbotron de Bootstrap https://getbootstrap.com/docs/4.0/components/jumbotron/. En su interior habrá un <h1> con id "title" que mostrará el título de la colección
                - Para cada item: (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
                  - Crear un componente item-data
             -->
+            <div class="jumbotron">
+                <h1 class="display-4" id="title">{{ col.collection.title }}</h1>
+              </div>
+              <div class="container">
+                <div class="row" style="margin-left: 1rem;">
+                            <div class="card-group">
+                                <item-data v-for="item in item" :item="item"></item-data>
+                            </div>               
+                    </div>
+                </div>
+            </div>
 
         </div>
 
